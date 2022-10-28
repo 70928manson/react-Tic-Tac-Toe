@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/70928manson/react-Tic-Tac-Toe/static/css/main.42e7b1df.css",
+    "main.js": "/70928manson/react-Tic-Tac-Toe/static/js/main.f8c0382c.js",
+    "index.html": "/70928manson/react-Tic-Tac-Toe/index.html",
+    "main.42e7b1df.css.map": "/70928manson/react-Tic-Tac-Toe/static/css/main.42e7b1df.css.map",
+    "main.f8c0382c.js.map": "/70928manson/react-Tic-Tac-Toe/static/js/main.f8c0382c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.42e7b1df.css",
+    "static/js/main.f8c0382c.js"
+  ]
+}
