@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import Square from "./Square";
+import EndGame from "./EndGame";
 
 const INITIAL = "";
 const X_PLAYER = "X";
@@ -20,16 +21,17 @@ const winCombination = [
 //點擊給他O 或 X  -> 判斷o x 用useState ?
 //點擊完後重新render array
 //判斷遊戲結束的邏輯
-
 function TicTacToe() {
     const [grid, setGrid] = useState(Array(9).fill(INITIAL));
-    const [player, setPlayer] = useState(false);
+    const [player, setPlayer] = useState(false); //預設o起手
     const [gameFinished, setGameFinished] = useState(false);
     const [draw, setDraw] = useState(false);
+    const [winCount, setWinCount] = useState({ X: 0, O: 0, });
 
     const isGameOver = () => {
         //if game is not finish
-        if(!gameFinished) {
+        if(gameFinished === false) {
+            console.log('1');
             //draw check: 沒有空格
             if(!grid.includes(INITIAL)) {
                 setDraw(true);
@@ -44,11 +46,37 @@ function TicTacToe() {
                     grid[winCombination[i][2]] === X_PLAYER
                 ) {
                     setGameFinished(true);
-                    console.log('x win');
+                    setWinCount({...winCount, X: winCount.X + 1});  //深拷貝
+                    console.log('X win');
+                    return;
+                }
+            }
+            //O win check
+            for(let i=0; i < 8; i++) {
+                if (
+                    grid[winCombination[i][0]] === O_PLAYER &&
+                    grid[winCombination[i][1]] === O_PLAYER &&
+                    grid[winCombination[i][2]] === O_PLAYER
+                ) {
+                    setGameFinished(true);
+                    setWinCount({...winCount, O: winCount.O + 1});  //深拷貝
+                    console.log('O win');
                     return;
                 }
             }
         }
+    }
+    const restartGame = () => {
+        //若重新開始遊戲，將狀態與表格恢復預設值
+        setGrid(Array(9).fill(INITIAL));
+        setGameFinished(false);
+        setPlayer(false);
+        setDraw(false);
+    }
+
+    const clearHistory = () => {
+        setWinCount({ X: 0, O: 0, });
+        restartGame();
     }
 
     isGameOver();
@@ -59,6 +87,7 @@ function TicTacToe() {
             grid.map((item, index) => {
                 if (index === id) {
                     if(player) {
+                        console.log(player, X_PLAYER);
                         return X_PLAYER;
                     }else {
                         return O_PLAYER;
@@ -73,6 +102,7 @@ function TicTacToe() {
 
     return (
         <div>
+            { gameFinished && <EndGame clearHistory={clearHistory} winCount={winCount} restartGame={restartGame} player={player} draw={draw} /> }
             <Square clickedArray={grid} handleClick={handleClick} />
         </div>
     )

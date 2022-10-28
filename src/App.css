@@ -41,3 +41,45 @@
   justify-content: center;
   grid-gap: 5px;
 }
+
+/*EndGame*/
+.end-game-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.8);
+}
+.end-game-screen .btn {
+  background: rgb(27, 255, 255);
+  color: rgb(63, 118, 170);
+  border: 2px solid rgb(63, 118, 170);
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  padding: 10px 14px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.3s ease-out;
+  max-height: 7rem;
+}
+.end-game-screen .btn:hover {
+  background: rgb(63, 118, 170);
+  color: rgb(27, 255, 255);
+  border: 2px solid rgb(27, 255, 255);
+}
+
+.win-text {
+  color: white;
+  font-size: 5rem;
+}
+
+.win-history {
+  color: white;
+  font-size: 2rem;
+  margin: 2rem 0;
+}
