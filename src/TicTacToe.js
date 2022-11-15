@@ -102,6 +102,11 @@ function TicTacToe() {
 
     return (
         <div>
+            <span className="win-history">
+                X's WINS: {winCount.X}
+            <br />
+                O's WINS: {winCount.O}
+            </span>
             { gameFinished && <EndGame clearHistory={clearHistory} winCount={winCount} restartGame={restartGame} player={player} draw={draw} /> }
             <Square clickedArray={grid} handleClick={handleClick} />
         </div>
